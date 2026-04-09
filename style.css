@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background:
+    radial-gradient(circle at top, #23235f 0%, #0b1021 45%, #05070f 100%);
+  color: #eef3ff;
+}
+
+.shell {
+  width: 900px;
+  margin: 24px auto;
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(8, 13, 32, 0.72);
+  border: 1px solid rgba(110, 151, 255, 0.25);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6cf6ff;
+  box-shadow: 0 0 14px #6cf6ff;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.panel {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.stat-card {
+  min-width: 140px;
+  padding: 12px 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.label {
+  display: block;
+  font-size: 13px;
+  color: #a8b4da;
+  margin-bottom: 4px;
+}
+
+.stat-card strong {
+  font-size: 26px;
+}
+
+.canvas-box {
+  position: relative;
+  width: 820px;
+  margin: 0 auto;
+}
+
+canvas {
+  position: relative;
+  display: block;
+  width: 820px;
+  height: 520px;
+  background: linear-gradient(180deg, #101631 0%, #0b0f20 100%);
+  border-radius: 20px;
+  border: 2px solid rgba(133, 172, 255, 0.35);
+  z-index: 2;
+}
+
+.glow {
+  position: absolute;
+  inset: 12px;
+  border-radius: 22px;
+  box-shadow: 0 0 40px rgba(108, 246, 255, 0.16);
+  pointer-events: none;
+  z-index: 1;
+}
+
+button {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 24px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #06111b;
+  background: linear-gradient(135deg, #6cf6ff 0%, #8c7bff 100%);
+  cursor: pointer;
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+.controls {
+  text-align: center;
+  margin: 14px 0 0;
+  color: #bdc7e7;
+}

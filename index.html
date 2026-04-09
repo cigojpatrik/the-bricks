@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Brick Blast</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <div class="brand">
+        <div class="dot"></div>
+        <h1>Neon Brick Blast</h1>
+      </div>
+      <button id="startBtn">Play</button>
+    </div>
+
+    <div class="panel">
+      <div class="stat-card">
+        <span class="label">Points</span>
+        <strong id="score">0</strong>
+      </div>
+      <div class="stat-card">
+        <span class="label">Lives</span>
+        <strong id="lives">3</strong>
+      </div>
+    </div>
+
+    <div class="canvas-box">
+      <canvas id="gameCanvas" width="820" height="520"></canvas>
+      <div class="glow"></div>
+    </div>
+
+    <p class="controls">Keyboard: A / D or ← / →</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
