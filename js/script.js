@@ -88,7 +88,7 @@ function togglePause() {
         paused = true;
         clearInterval(intervalId);
         clearInterval(timerId);
-        $("#pauseBtn").html("Nadaljuj");
+        $("#pauseBtn").html("Continue");
     } else {
         paused = false;
         intervalId = setInterval(draw, 10);
