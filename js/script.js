@@ -28,6 +28,7 @@ var paddlex;
 var paddleh;
 var paddlew;
 
+
 var rightDown = false;
 var leftDown = false;
 
