@@ -314,6 +314,7 @@ function draw() {
         dx = -dx;
     }
 
+
 	
     if (y + dy < 0 + r) {
         dy = -dy;
