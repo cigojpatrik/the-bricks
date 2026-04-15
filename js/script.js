@@ -18,7 +18,6 @@ var brickcolors = {
     2: "#75a9d6",
     3: "#84c5ff"
 };
-
 var start = true;
 var tocke;
 var sekunde;
@@ -27,7 +26,6 @@ var izpisTimer;
 var paddlex;
 var paddleh;
 var paddlew;
-
 
 var rightDown = false;
 var leftDown = false;
@@ -40,6 +38,9 @@ var BRICKHEIGHT;
 var PADDING;
 var gameWon = false;
 var cakaNaStart = true;
+
+var paused = false;
+var gameOver = false;
 
 var bgImage = new Image();
 bgImage.src = "img/background.png";
@@ -66,6 +67,7 @@ function startGame() {
         cakaNaStart = false;
     }
 }
+
 function resetGame() {
     clearInterval(intervalId);
     clearInterval(timerId);
@@ -76,6 +78,23 @@ function resetGame() {
     leftDown = false;
 
     init();
+}
+function togglePause() {
+    if (cakaNaStart || gameOver) {
+        return;
+    }
+
+    if (!paused) {
+        paused = true;
+        clearInterval(intervalId);
+        clearInterval(timerId);
+        $("#pauseBtn").html("Nadaljuj");
+    } else {
+        paused = false;
+        intervalId = setInterval(draw, 10);
+        timerId = setInterval(timer, 1000);
+        $("#pauseBtn").html("Pause");
+    }
 }
 
 function init() {
@@ -99,6 +118,9 @@ function init() {
 	
     intervalId = setInterval(draw, 10);
     timerId = setInterval(timer, 1000);
+	paused = false;
+	gameOver = false;
+	$("#pauseBtn").html("Pause");
 }
 
 function init_paddle() {
@@ -113,10 +135,10 @@ function initbricks() {
         NROWS = 3;
         NCOLS = 4;
     }else if(level==2){
-        NROWS = 3;
+        NROWS = 4;
         NCOLS = 6;
     }else if(level==3){
-        NROWS = 3;
+        NROWS = 5;
         NCOLS = 8;
     }else{
         NROWS = 2;
@@ -314,8 +336,6 @@ function draw() {
         dx = -dx;
     }
 
-
-	
     if (y + dy < 0 + r) {
         dy = -dy;
     } else if (y + dy > HEIGHT - (r + f)) {
@@ -325,6 +345,7 @@ function draw() {
             dy = -dy;
             start = true;
         } else if (y + dy > HEIGHT - r) {
+			gameOver = true;
             clearInterval(timerId);
             clearInterval(intervalId);
 			$("#resetBtn").show();
