@@ -18,6 +18,7 @@ var brickcolors = {
     2: "#75a9d6",
     3: "#84c5ff"
 };
+
 var start = true;
 var tocke;
 var sekunde;
