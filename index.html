@@ -1,55 +1,38 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galaxy Bricks</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>The Bricks</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/jQuery.js"></script>
+  <script src="js/script.js"></script>
 </head>
-<body>
-  <main class="game-shell">
-    <header class="topbar">
-      <div class="title-block">
-        <p class="eyebrow">Space defense</p>
-        <h1>Galaxy Bricks</h1>
-        <p>Move the spaceship: ← → or A / D · Pause: P</p>
+<body onload="init()">
+  <div class="container">
+    <div class="game-header">
+      <h1 class="naslov">The Bricks</h1>
+      <p class="navodila">Premikaj ploscico z levo in desno puscico in pocisti vse bloke.</p>
+	  <button id="startBtn" onclick="startGame()">Start</button>
+	  <button id="resetBtn" onclick="resetGame()">Reset</button>
+    </div>
+    <div class="hud">
+      <div class="kocke">
+        <span class="hud-label">Level</span>
+        <mark id="level">1</mark>
       </div>
-      <div class="hud">
-        <div class="hud-item">
-          <span class="label">LEVEL</span>
-          <strong id="level">1</strong>
-        </div>
-        <div class="hud-item">
-          <span class="label">SCORE</span>
-          <strong id="score">0</strong>
-        </div>
-        <div class="hud-item">
-          <span class="label">TIME</span>
-          <strong id="timer">00:00</strong>
-        </div>
-        <div class="hud-item">
-          <span class="label">STATUS</span>
-          <strong id="status">Pripravljen</strong>
-        </div>
+      <div class="kocke">
+        <span class="hud-label">Cas</span>
+        <mark id="cas">00:00</mark>
       </div>
-    </header>
-
-    <section class="canvas-wrap">
-      <canvas id="gameCanvas" width="800" height="520" aria-label="Igra Galaxy Bricks"></canvas>
-      <div id="overlay" class="overlay hidden">
-        <h2 id="overlayTitle">Galaxy Bricks</h2>
-        <p id="overlayText">Pritisni gumb za začetek igre.</p>
-        <button id="restartBtn" type="button">Zaženi znova</button>
+      <div class="kocke">
+        <span class="hud-label">Tocke</span>
+        <mark id="tocke">0</mark>
       </div>
-    </section>
-
-    <footer class="controls">
-      <button id="startBtn" type="button">New Mission</button>
-      <button id="pauseBtn" type="button">Pavza</button>
-      <p>Odbij energijsko kroglo, razbij asteroidne bloke in počisti vse sektorje galaksije.</p>
-    </footer>
-  </main>
-
-  <script src="script.js"></script>
+    </div>
+    <div >
+      <canvas id="canvas" width="710" height="520"></canvas>
+    </div>
+  </div>
 </body>
 </html>
