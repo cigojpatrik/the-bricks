@@ -269,13 +269,13 @@ function draw() {
 
     if (rightDown) {
         if ((paddlex + paddlew) < WIDTH) {
-            paddlex += 5;
+            paddlex += 8;
         } else {
             paddlex = WIDTH - paddlew;
         }
     } else if (leftDown) {
         if (paddlex > 0) {
-            paddlex -= 5;
+            paddlex -= 8;
         } else {
             paddlex = 0;
         }
