@@ -203,10 +203,13 @@ function preveriZmago() {
         clearInterval(timerId);
         clearInterval(intervalId);
         Swal.fire({
-            title: 'Bravo!',
-            text: 'Koncal si level ' + level,
+            title: 'Congratulations!',
+            text: 'You complited level ' + level,
             icon: 'success',
-            confirmButtonText: 'V redu'
+            confirmButtonText: 'OK',
+			background: '#111827',
+			color: '#5682AA',
+			confirmButtonColor: '#5682AA'
         }).then(function () {
 			level++;
 			gameWon = false;
