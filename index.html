@@ -10,31 +10,45 @@
   <script src="js/script.js"></script>
 </head>
 <body onload="init()">
-  <div class="container">
-    <div class="game-header">
-      <h1 class="naslov">Galaxy Bricks</h1>
-      
-	  <button id="startBtn" onclick="startGame()">Start</button>
-	  <button id="resetBtn" onclick="resetGame()">Reset</button>
-	  <button id="pauseBtn" onclick="togglePause()">Pause</button>
-    </div>
-    <div class="hud">
-      <div class="kocke">
-        <span class="hud-label">Level</span>
-        <mark id="level">1</mark>
-      </div>
-      <div class="kocke">
-        <span class="hud-label">Time</span>
-        <mark id="cas">00:00</mark>
-      </div>
-      <div class="kocke">
-        <span class="hud-label">Score</span>
-        <mark id="tocke">0</mark>
-      </div>
-    </div>
-    <div >
-      <canvas id="canvas" width="710" height="520"></canvas>
-    </div>
-  </div>
+<div class="naslov1">
+	<h1 class="naslov">Galaxy Bricks</h1>
+</div>
+	<div class="glavni">
+	  <div class="container">
+		<div class="game-header">
+		  
+		  
+		  
+		</div>
+		<div class="hud">
+		  <div class="kocke">
+			<span class="hud-label">Level</span>
+			<mark id="level">1</mark>
+		  </div>
+		  <div class="kocke">
+			<span class="hud-label">Time</span>
+			<mark id="cas">00:00</mark>
+		  </div>
+		  <div class="kocke">
+			<span class="hud-label">Score</span>
+			<mark id="tocke">0</mark>
+		  </div>
+		</div>
+		<div >
+		  <canvas id="canvas" width="710" height="520"></canvas>
+		</div>
+		<div class="gumbi">
+			<button id="startBtn" onclick="startGame()">Start</button>
+			<button id="resetBtn" onclick="resetGame()">Reset</button>
+			<button id="pauseBtn" onclick="togglePause()">Pause</button>
+			<button id="instructionsBtn" onclick="togglePause()">Instructions</button>
+		</div>
+	  </div>
+	<div class="desna">
+		<div class="zgornji"></div>
+		<div class="spodnji"></div>		
+	</div>
+	</div>
+	
 </body>
 </html>
