@@ -135,10 +135,10 @@ function initbricks() {
         NROWS = 3;
         NCOLS = 4;
     }else if(level==2){
-        NROWS = 4;
+        NROWS = 3;
         NCOLS = 6;
     }else if(level==3){
-        NROWS = 5;
+        NROWS = 3;
         NCOLS = 8;
     }else{
         NROWS = 2;
