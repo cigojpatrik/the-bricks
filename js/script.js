@@ -221,7 +221,7 @@ function onKeyUp(evt) {
     }
 }
 
-function preveriZmago() {
+function Zmaga() {
     if (!gameWon && allBricksDestroyed()) {
         gameWon = true;
         clearInterval(timerId);
@@ -329,7 +329,7 @@ function draw() {
         bricks[row][col]--;
         tocke++;
         $("#tocke").html(tocke);
-        preveriZmago();
+        Zmaga();
     }
 
     if (x + dx > WIDTH - r || x + dx < 0 + r) {
