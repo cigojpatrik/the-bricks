@@ -12,12 +12,6 @@ var timerId;
 var level = 1;
 
 var paddlecolor = "#0f2742";
-var ballcolor = "#ff2a00";
-var brickcolors = {
-    1: "#6385a0",
-    2: "#75a9d6",
-    3: "#84c5ff"
-};
 var start = true;
 var tocke;
 var sekunde;
@@ -48,6 +42,15 @@ bgImage.src = "img/background.png";
 var paddleImage = new Image();
 paddleImage.src = "img/paddle.png";
 
+var brickImages = {
+    1: new Image(),
+    2: new Image(),
+    3: new Image()
+};
+brickImages[1].src = "img/brick1.png";
+brickImages[2].src = "img/brick2.png";
+brickImages[3].src = "img/brick3.png";
+
 function updateLevelDisplay() {
     $("#level").html(level);
 }
@@ -68,27 +71,27 @@ function checkBestScore() {
     }
 }
 
+function showCredits() {
+    Swal.fire({
+        title: 'Credits',
+        html: '<p style="font-size:22px; font-weight:bold;">Patrik Cigoj</p>',
+        icon: 'info',
+        confirmButtonText: 'Close',
+        background: '#111827',
+        color: '#5682AA',
+        confirmButtonColor: '#5682AA'
+    });
+}
+
 function showInstructions() {
     Swal.fire({
         title: 'Instructions',
-        html: '<div style="text-align:left;">' +
-              '<p><b>Goal:</b> Destroy all the bricks on the screen to complete each level.</p><br>' +
-              '<p><b>Controls:</b></p>' +
-              '<ul style="margin-left:20px;">' +
-              '<li>Use the <b>Left Arrow (\u2190)</b> and <b>Right Arrow (\u2192)</b> keys to move the paddle.</li>' +
-              '<li>Click <b>Start</b> to launch the ball.</li>' +
-              '<li>Click <b>Pause</b> to pause or continue the game.</li>' +
-              '<li>Click <b>Reset</b> to restart the game from level 1.</li>' +
-              '</ul><br>' +
-              '<p><b>Scoring:</b> You earn 1 point for each brick you destroy. Your best score is saved automatically.</p><br>' +
-              '<p><b>Tip:</b> Don\'t let the ball fall below the paddle, or the game ends!</p>' +
-              '</div>',
+        text: 'Use the arrow keys on the keyboard to move the paddle and destroy all the spaceships without dropping the ball.',
         icon: 'info',
         confirmButtonText: 'Got it!',
         background: '#111827',
         color: '#5682AA',
-        confirmButtonColor: '#5682AA',
-        width: 600
+        confirmButtonColor: '#5682AA'
     });
 }
 
@@ -337,27 +340,16 @@ function draw() {
     for (var i = 0; i < NROWS; i++) {
         for (var j = 0; j < NCOLS; j++) {
             if (bricks[i][j] > 0) {
-				ctx.fillStyle = brickcolors[bricks[i][j]];
-
-				if (bricks[i][j] == 3) {
-					ctx.shadowColor = "#a6d4fc";
-					ctx.shadowBlur = 18;
-				} else if (bricks[i][j] == 2) {
-					ctx.shadowColor = "#90b2ce";
-					ctx.shadowBlur = 18;
-				} else {
-					ctx.shadowColor = "#7b96aa";
-					ctx.shadowBlur = 18;
+				var brickImg = brickImages[bricks[i][j]];
+				if (brickImg.complete) {
+					ctx.drawImage(
+						brickImg,
+						(j * (BRICKWIDTH + PADDING)) + PADDING,
+						(i * (BRICKHEIGHT + PADDING)) + PADDING,
+						BRICKWIDTH,
+						BRICKHEIGHT
+					);
 				}
-
-				rect(
-					(j * (BRICKWIDTH + PADDING)) + PADDING,
-					(i * (BRICKHEIGHT + PADDING)) + PADDING,
-					BRICKWIDTH,
-					BRICKHEIGHT
-				);
-
-				ctx.shadowBlur = 0;
 			}
         }
     }
