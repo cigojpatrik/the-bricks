@@ -12,7 +12,7 @@ var timerId;
 var level = 1;
 
 var paddlecolor = "#0f2742";
-var ballcolor = "#bae6fd";
+var ballcolor = "#ff2a00";
 var brickcolors = {
     1: "#6385a0",
     2: "#75a9d6",
@@ -50,6 +50,46 @@ paddleImage.src = "img/paddle.png";
 
 function updateLevelDisplay() {
     $("#level").html(level);
+}
+
+function getBestScore() {
+    var best = localStorage.getItem("galaxyBricksBest");
+    return best ? parseInt(best) : 0;
+}
+
+function setBestScore(score) {
+    localStorage.setItem("galaxyBricksBest", score);
+    $("#bestScore").html(score);
+}
+
+function checkBestScore() {
+    if (tocke > getBestScore()) {
+        setBestScore(tocke);
+    }
+}
+
+function showInstructions() {
+    Swal.fire({
+        title: 'Instructions',
+        html: '<div style="text-align:left;">' +
+              '<p><b>Goal:</b> Destroy all the bricks on the screen to complete each level.</p><br>' +
+              '<p><b>Controls:</b></p>' +
+              '<ul style="margin-left:20px;">' +
+              '<li>Use the <b>Left Arrow (\u2190)</b> and <b>Right Arrow (\u2192)</b> keys to move the paddle.</li>' +
+              '<li>Click <b>Start</b> to launch the ball.</li>' +
+              '<li>Click <b>Pause</b> to pause or continue the game.</li>' +
+              '<li>Click <b>Reset</b> to restart the game from level 1.</li>' +
+              '</ul><br>' +
+              '<p><b>Scoring:</b> You earn 1 point for each brick you destroy. Your best score is saved automatically.</p><br>' +
+              '<p><b>Tip:</b> Don\'t let the ball fall below the paddle, or the game ends!</p>' +
+              '</div>',
+        icon: 'info',
+        confirmButtonText: 'Got it!',
+        background: '#111827',
+        color: '#5682AA',
+        confirmButtonColor: '#5682AA',
+        width: 600
+    });
 }
 
 function resetBall() {
@@ -110,6 +150,7 @@ function init() {
     updateLevelDisplay();
     $("#cas").html(izpisTimer);
     $("#tocke").html(tocke);
+    $("#bestScore").html(getBestScore());
 	
 	cakaNaStart = true;
 	start = false;
@@ -226,6 +267,7 @@ function Zmaga() {
         gameWon = true;
         clearInterval(timerId);
         clearInterval(intervalId);
+        checkBestScore();
         Swal.fire({
             title: 'Congratulations!',
             text: 'You complited level ' + level,
@@ -261,9 +303,13 @@ function draw() {
 	if (bgImage.complete) {
 		ctx.drawImage(bgImage, 0, 0, WIDTH, HEIGHT);
 	}
-    ctx.shadowColor = "#38bdf8";
-	ctx.shadowBlur = 30;
-	ctx.fillStyle = ballcolor;
+    ctx.shadowColor = "#ff4500";
+	ctx.shadowBlur = 35;
+	var fireGradient = ctx.createRadialGradient(x, y, 0, x, y, 10);
+	fireGradient.addColorStop(0, "#fff2a8");
+	fireGradient.addColorStop(0.4, "#ff8c00");
+	fireGradient.addColorStop(1, "#cc0000");
+	ctx.fillStyle = fireGradient;
 	circle(x, y, 10);
 	ctx.shadowBlur = 0;
 
@@ -348,6 +394,7 @@ function draw() {
 			gameOver = true;
             clearInterval(timerId);
             clearInterval(intervalId);
+            checkBestScore();
 			$("#resetBtn").show();
         }
     }

@@ -14,6 +14,7 @@
 	<h1 class="naslov">Galaxy Bricks</h1>
 </div>
 	<div class="glavni">
+	  <div class="leva-spacer"></div>
 	  <div class="container">
 		<div class="game-header">
 		  
@@ -37,16 +38,22 @@
 		<div >
 		  <canvas id="canvas" width="710" height="520"></canvas>
 		</div>
-		<div class="gumbi">
-			<button id="startBtn" onclick="startGame()">Start</button>
-			<button id="resetBtn" onclick="resetGame()">Reset</button>
-			<button id="pauseBtn" onclick="togglePause()">Pause</button>
-			<button id="instructionsBtn" onclick="togglePause()">Instructions</button>
-		</div>
 	  </div>
 	<div class="desna">
-		<div class="zgornji"></div>
-		<div class="spodnji"></div>		
+		<div class="zgornji">
+			<div class="gumbi">
+				<button id="startBtn" onclick="startGame()">Start</button>
+				<button id="resetBtn" onclick="resetGame()">Reset</button>
+				<button id="pauseBtn" onclick="togglePause()">Pause</button>
+				<button id="instructionsBtn" onclick="showInstructions()">Instructions</button>
+			</div>
+		</div>
+		<div class="spodnji">
+			<div class="best-box">
+				<span class="best-label">Best Score</span>
+				<mark id="bestScore">0</mark>
+			</div>
+		</div>
 	</div>
 	</div>
 	
